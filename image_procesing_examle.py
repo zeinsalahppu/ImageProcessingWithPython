@@ -3,17 +3,22 @@ Image Processing Example
 
 """
 
-from PIL import Image
-img = Image.open("d:/develope/ocvtest/f1.JPG")
+from PIL import Image, ImageFilter
 
-print(img.format)
-print(img.size)
-print(img.mode)
+img = Image.open("d:/develope/ocvtest/f2_new.JPG")
 
 img.show()
 
-small_img = img.crop((0, 0, 300, 200))
+blured_img = img.filter(ImageFilter.BLUR)
+edge_img = img.filter(ImageFilter.EDGE_ENHANCE)
+contour_img = img.filter(ImageFilter.CONTOUR)
+median_img = img.filter(ImageFilter.MedianFilter)
 
-small_img.show()
+blured_img.show()
+edge_img.show()
+contour_img.show()
+median_img.show()
 
-small_img.save("d:/develope/ocvtest/f1_new.JPG")
+blured_img.save("d:/develope/ocvtest/f2_new_blur.JPG")
+edge_img.save("d:/develope/ocvtest/f2_new_edge.JPG")
+contour_img.save("d:/develope/ocvtest/f2_new_contour.JPG")
