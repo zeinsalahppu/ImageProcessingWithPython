@@ -4,16 +4,20 @@ Image Processing Example
 """
 
 from PIL import Image
-img = Image.open("d:/develope/ocvtest/f1.JPG")
 
-print(img.format)
-print(img.size)
-print(img.mode)
+img = Image.open("d:/develope/ocvtest/f2_new.JPG")
 
-img.show()
+grey_img = img.convert("L")
+hsv_img = img.convert("HSV")
 
-small_img = img.crop((0, 0, 300, 200))
+h, s, v = hsv_img.split()
+hh = hsv_img.getchannel("H")
 
-small_img.show()
+hh.show()
+s.show()
+v.show()
 
-small_img.save("d:/develope/ocvtest/f1_new.JPG")
+grey_img.save("d:/develope/ocvtest/grey_img.JPG")
+h.save("d:/develope/ocvtest/h_img.JPG")
+s.save("d:/develope/ocvtest/s_img.JPG")
+v.save("d:/develope/ocvtest/v_img.JPG")
