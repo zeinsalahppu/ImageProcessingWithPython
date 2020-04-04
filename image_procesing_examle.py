@@ -4,16 +4,17 @@ Image Processing Example
 """
 
 from PIL import Image
-img = Image.open("d:/develope/ocvtest/f1.JPG")
 
-print(img.format)
-print(img.size)
-print(img.mode)
+img = Image.open("d:/develope/ocvtest/f2_new.JPG")
 
-img.show()
+resized_img = img.resize((200, 300))
+rotated_img = img.rotate(45)
+flipped_img = img.transpose(Image.FLIP_TOP_BOTTOM)
 
-small_img = img.crop((0, 0, 300, 200))
+resized_img.show()
+rotated_img.show()
+flipped_img.show()
 
-small_img.show()
-
-small_img.save("d:/develope/ocvtest/f1_new.JPG")
+resized_img.save("d:/develope/ocvtest/f1_new_resized.JPG")
+rotated_img.save("d:/develope/ocvtest/f1_new_rotated.JPG")
+flipped_img.save("d:/develope/ocvtest/f1_new_flipped.JPG")
