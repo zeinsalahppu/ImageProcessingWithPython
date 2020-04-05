@@ -1,19 +1,29 @@
 """
-Image Processing Example
+Image Processing Example with openCV
 
 """
 
-from PIL import Image
-img = Image.open("d:/develope/ocvtest/f1.JPG")
+import cv2 as cv
+import numpy as np
 
-print(img.format)
-print(img.size)
-print(img.mode)
+img = cv.imread('d:/develope/ocvtest/f2_new.JPG', cv.IMREAD_COLOR)
 
-img.show()
+size = img.shape
+print(size)
 
-small_img = img.crop((0, 0, 300, 200))
+neg_img1 = np.zeros(size, np.uint8)
 
-small_img.show()
+for i in range(size[0]):
+    for j in range(size[1]):
+        in_pixel = img[i, j]
+        out_pixel = [255 - in_pixel[0], 255 - in_pixel[1], 255 - in_pixel[2]]
+        neg_img1[i, j] = out_pixel
 
-small_img.save("d:/develope/ocvtest/f1_new.JPG")
+
+cv.imshow('image', img)
+cv.imshow('negated image', neg_img1)
+
+cv.imwrite('d:/develope/ocvtest/f1_new_neg1_ocv.JPG', neg_img1)
+
+cv.waitKey(0)
+
