@@ -25,5 +25,18 @@ cv.imshow('negated image', neg_img1)
 
 cv.imwrite('d:/develope/ocvtest/f1_new_neg1_ocv.JPG', neg_img1)
 
+red_img = img.copy()
+
+for i in range(size[0]):
+    for j in range(size[1]):
+        red_img[i, j][0] = 0
+        red_img[i, j][1] = 0
+
+
+cv.imshow('red image', red_img)
+
+cv.imwrite('d:/develope/ocvtest/f1_new_red_ocv.JPG', red_img)
+
+
 cv.waitKey(0)
 
